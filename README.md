@@ -70,3 +70,24 @@ export default tseslint.config([
 
 ## Environment Variables
 Create a .env file based on .env.example with your Supabase credentials.
+
+## Recursos Module
+
+A new section `/recursos` is available from the dashboard sidebar. It displays the current resources and the factories owned by the user. Buttons allow you to collect generated resources and start upgrades.
+
+### SQL functions
+SQL definitions for the RPC functions used by this module are in `sql/recursos_functions.sql`. Execute this file in your Supabase/PostgreSQL database to create the required procedures:
+
+```
+psql < sql/recursos_functions.sql
+```
+
+### Development
+Run the app in development mode with:
+
+```
+npm install
+npm run dev
+```
+
+Remember to configure your `.env` with your Supabase credentials.

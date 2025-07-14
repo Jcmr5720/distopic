@@ -33,26 +33,38 @@ export default function Dashboard() {
   if (!user) return null
 
   return (
-    <div className="container mt-5">
-      <h2>Dashboard</h2>
-      {recursos ? (
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {Object.entries(recursos).map(([key, value]) =>
-            key !== 'usuario_id' ? (
-              <div className="col" key={key}>
-                <div className="card h-100 text-center">
-                  <div className="card-body">
-                    <h5 className="card-title text-capitalize">{key.replace('_', ' ')}</h5>
-                    <p className="card-text">{value}</p>
+    <div className="d-flex">
+      <aside className="p-3 bg-dark text-white" style={{ minWidth: '200px' }}>
+        <ul className="nav flex-column">
+          <li className="nav-item">
+            <button className="btn btn-link text-start text-white" onClick={() => navigate('/dashboard')}>Inicio</button>
+          </li>
+          <li className="nav-item">
+            <button className="btn btn-link text-start text-white" onClick={() => navigate('/recursos')}>Recursos</button>
+          </li>
+        </ul>
+      </aside>
+      <main className="flex-grow-1 p-4">
+        <h2>Dashboard</h2>
+        {recursos ? (
+          <div className="row row-cols-1 row-cols-md-3 g-4">
+            {Object.entries(recursos).map(([key, value]) =>
+              key !== 'usuario_id' ? (
+                <div className="col" key={key}>
+                  <div className="card h-100 text-center">
+                    <div className="card-body">
+                      <h5 className="card-title text-capitalize">{key.replace('_', ' ')}</h5>
+                      <p className="card-text">{value}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : null
-          )}
-        </div>
-      ) : (
-        <p>Cargando...</p>
-      )}
+              ) : null
+            )}
+          </div>
+        ) : (
+          <p>Cargando...</p>
+        )}
+      </main>
     </div>
   )
 }

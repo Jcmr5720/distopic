@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './AuthContext'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import RecursosModule from './pages/RecursosModule'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function ProtectedRoute({ children }: { children: JSX.Element }) {
@@ -23,6 +24,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recursos"
+            element={
+              <ProtectedRoute>
+                <RecursosModule />
               </ProtectedRoute>
             }
           />
