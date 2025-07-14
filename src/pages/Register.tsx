@@ -31,14 +31,22 @@ export default function Register() {
     }
 
     setLoading(true)
-    const { data, error: signUpError } = await supabase.auth.signUp({ email, password })
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+    })
     if (signUpError || !data.user) {
       setError(signUpError?.message ?? 'Error registering')
       setLoading(false)
       return
     }
     const userId = data.user.id
-    const { error: usuarioError } = await supabase.from('usuarios').insert({ id: userId, nombre: username })
+    const { error: usuarioError } = await supabase.from('usuarios').insert({
+      id: userId,
+      nombre_usuario: username,
+      correo: email,
+      clave: password,
+    })
     if (usuarioError) {
       setError(usuarioError.message)
       setLoading(false)
