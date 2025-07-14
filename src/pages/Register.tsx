@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { type FormEvent, useState } from 'react'
 import { supabase } from '../supabaseClient'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,14 +17,12 @@ export default function Register() {
       setError(signUpError?.message ?? 'Error registering')
       return
     }
-    // create record in usuarios
     const userId = data.user.id
     const { error: usuarioError } = await supabase.from('usuarios').insert({ id: userId, nombre: username })
     if (usuarioError) {
       setError(usuarioError.message)
       return
     }
-    // create recursos_usuario
     const { error: recursosError } = await supabase.from('recursos_usuario').insert({
       usuario_id: userId,
       chrono_polvo: 1000,
