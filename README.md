@@ -67,3 +67,6 @@ export default tseslint.config([
   },
 ])
 ```
+
+## Environment Variables
+Create a .env file based on .env.example with your Supabase credentials.
